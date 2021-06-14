@@ -6,6 +6,8 @@ galaxy_info:
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: https://github.com/serbayacar/ansible_role_sos-report/issues
+  github_branch: master
 
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
   license: license (GPL-3.0-or-later)
