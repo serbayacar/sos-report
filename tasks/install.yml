@@ -1,8 +1,8 @@
 ---
 # tasks file for sos-report
-- name: debugging
-  debug:
-    var: ansible_facts
+# - name: debugging
+#   debug:
+#     var: ansible_facts
 
 - name: Install sos-report | Fedora
   yum:
