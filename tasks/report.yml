@@ -60,15 +60,20 @@
     --tmp-dir "{{ tmp_dir }}" 
     -z gzip
     --batch
-  when:
-    - ansible_distribution == "Ubuntu"
-    - distribution_major_version >= "16"
-    - ansible_distribution == "CentOS"
-    - ansible_distribution_major_version >= "7"
-    - distribution == "RedHat"
-    - distribution_major_version >= "7"
-    - distribution == "Debian"
-    - distribution_major_version >= "9"
+  when: >
+    (ansible_distribution == "Ubuntu" and ansible_distribution_major_version >= "16")  or
+    (ansible_distribution == "CentOS" and ansible_distribution_major_version >= "7")  or
+    (distribution == "RedHat" and distribution_major_version >= "7")  or
+    (distribution == "Debian" and distribution_major_version >= "9")
+
+# - ansible_distribution == "Ubuntu"
+# - distribution_major_version >= "16"
+# - ansible_distribution == "CentOS"
+# - ansible_distribution_major_version >= "7"
+# - distribution == "RedHat"
+# - distribution_major_version >= "7"
+# - distribution == "Debian"
+# - distribution_major_version >= "9"
 
 # Fetching report file
 - name: Search report file from remote
