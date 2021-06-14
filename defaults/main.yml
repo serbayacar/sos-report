@@ -1,0 +1,7 @@
+---
+# defaults file for sos-report
+tmp_dir: /tmp/
+fetch_to: /tmp/
+ticket_number: 1001
+costumer: 'test'
+sos_modules: module1,module2

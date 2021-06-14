@@ -1,0 +1,8 @@
+---
+- name: Install dependencies | Centos7
+  yum:
+    name: epel-release
+    state: latest
+  when:
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version == "7"

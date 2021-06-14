@@ -1,0 +1,50 @@
+---
+# tasks file for sos-report
+- name: debugging
+  debug:
+    var: ansible_facts
+
+- name: Install sos-report | Fedora
+  yum:
+    name: sos
+    state: latest
+    update_cache: yes
+  when: 
+    - distribution == "Fedora"
+    - distribution_major_version >= "34"
+
+- name: Install sos-report | CentOS
+  yum:
+    name: sos
+    state: latest
+    update_cache: yes
+  when: 
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version >= "7"
+
+- name: Install sos-report | RedHat
+  yum:
+    name: sos
+    state: latest
+    update_cache: yes
+  when: 
+    - distribution == "RedHat"
+    - distribution_major_version >= "7"
+
+- name: Install sos-report | Ubuntu
+  apt:
+    name: sosreport
+    state: latest
+    update_cache: yes
+  when: 
+    - ansible_distribution == "Ubuntu"
+    - distribution_major_version >= "16"
+
+- name: Install sos-report | Debian 9
+  apt:
+    name: sosreport
+    state: latest
+    update_cache: yes
+  when: 
+    - distribution == "Debian"
+    - distribution_major_version >= "9"

@@ -1,0 +1,90 @@
+---
+- name: Start sos-report | CentOS
+  command: >
+    sosreport 
+    --o "{{ sos_modules }}" 
+    --name "{{ costumer }}" 
+    --case-id "{{ ticket_number }}" 
+    --tmp-dir "{{ tmp_dir }}" 
+    -z gzip
+    --batch
+  when: 
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version == "7"
+  
+- name: Start sos-report | Ubuntu
+  command: >
+    sosreport 
+    --o "{{ sos_modules }}" 
+    --name "{{ costumer }}" 
+    --case-id "{{ ticket_number }}" 
+    --tmp-dir "{{ tmp_dir }}" 
+    -z gzip
+    --batch
+  when: 
+    - ansible_distribution == "Ubuntu"
+    - distribution_major_version >= "16"
+
+- name: Start sos-report | RedHat
+  command: >
+    sosreport 
+    --o "{{ sos_modules }}" 
+    --name "{{ costumer }}" 
+    --case-id "{{ ticket_number }}" 
+    --tmp-dir "{{ tmp_dir }}" 
+    -z gzip
+    --batch
+  when: 
+    - distribution == "RedHat"
+    - distribution_major_version >= "7"
+
+- name: Start sos-report | Debian 9
+  command: >
+    sosreport 
+    --o "{{ sos_modules }}" 
+    --name "{{ costumer }}" 
+    --case-id "{{ ticket_number }}" 
+    --tmp-dir "{{ tmp_dir }}" 
+    -z gzip
+    --batch
+  when: 
+    - distribution == "Debian"
+    - distribution_major_version >= "9"
+
+- name: Start sos-report | Generic
+  command: >
+    sos report 
+    --o "{{ sos_modules }}" 
+    --name "{{ costumer }}" 
+    --case-id "{{ ticket_number }}" 
+    --tmp-dir "{{ tmp_dir }}" 
+    -z gzip
+    --batch
+  when:
+    - ansible_distribution == "Ubuntu"
+    - distribution_major_version >= "16"
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version >= "7"
+    - distribution == "RedHat"
+    - distribution_major_version >= "7"
+    - distribution == "Debian"
+    - distribution_major_version >= "9"
+
+# Fetching report file
+- name: Search report file from remote
+  find:
+    path: "{{ tmp_dir }}"
+    patterns: "*{{ costumer }}[-|.]{{ ticket_number }}*.tar.gz"
+  register: reportFile
+
+- name: Debugging
+  debug:
+    var: reportFile
+
+- name: Fetch the remote file to local
+  fetch:
+    src: "{{ reportFile['files'][0]['path'] }}"
+    dest: "{{ fetch_to }}"
+    flat: yes
+  when:
+    - reportFile | length > 0
