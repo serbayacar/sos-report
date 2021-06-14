@@ -9,8 +9,8 @@
     -z gzip
     --batch
   when: 
-    - ansible_distribution == "CentOS"
-    - ansible_distribution_major_version == "7"
+    - ansible_facts['distribution'] == "CentOS"
+    - ansible_facts['distribution_major_version'] == "7"
   
 - name: Start sos-report | Ubuntu
   command: >
@@ -22,8 +22,8 @@
     -z gzip
     --batch
   when: 
-    - ansible_distribution == "Ubuntu"
-    - distribution_major_version >= "16"
+    - ansible_facts['distribution'] == "Ubuntu"
+    - ansible_facts['distribution_major_version'] >= "16"
 
 - name: Start sos-report | RedHat
   command: >
@@ -35,8 +35,8 @@
     -z gzip
     --batch
   when: 
-    - distribution == "RedHat"
-    - distribution_major_version >= "7"
+    - ansible_facts['distribution'] == "RedHat"
+    - ansible_facts['distribution_major_version'] >= "7"
 
 - name: Start sos-report | Debian 9
   command: >
@@ -48,8 +48,8 @@
     -z gzip
     --batch
   when: 
-    - distribution == "Debian"
-    - distribution_major_version >= "9"
+    - ansible_facts['distribution'] == "Debian"
+    - ansible_facts['distribution_major_version'] >= "9"
 
 - name: Start sos-report | Generic
   command: >
@@ -61,10 +61,10 @@
     -z gzip
     --batch
   when: >
-    (ansible_distribution == "Ubuntu" and ansible_distribution_major_version != "16")  or
-    (ansible_distribution == "CentOS" and ansible_distribution_major_version != "7")  or
-    (distribution == "Debian" and distribution_major_version != "9") or
-    (distribution == "Fedora" and distribution_major_version == "34")
+    (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_major_version'] != "16")  or
+    (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] != "7")  or
+    (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] != "9") or
+    (ansible_facts['distribution'] == "Fedora" and ansible_facts['distribution_major_version'] == "34")
 
 # Fetching report file
 - name: Search report file from remote
