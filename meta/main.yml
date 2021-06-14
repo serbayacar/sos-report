@@ -10,7 +10,7 @@ galaxy_info:
   github_branch: master
 
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
-  license: license (GPL-3.0-or-later)
+  license: MIT
 
   min_ansible_version: 2.9
   version: 1.0.0
