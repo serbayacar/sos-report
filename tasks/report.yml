@@ -63,9 +63,9 @@
   when: >
     (ansible_distribution == "Ubuntu" and ansible_distribution_major_version != "16")  or
     (ansible_distribution == "CentOS" and ansible_distribution_major_version != "7")  or
-    (distribution == "RedHat" and distribution_major_version >= "7")  or
     (distribution == "Debian" and distribution_major_version >= "9")
 
+# (distribution == "RedHat" and distribution_major_version >= "7")  or
 # - ansible_distribution == "Ubuntu"
 # - distribution_major_version >= "16"
 # - ansible_distribution == "CentOS"
