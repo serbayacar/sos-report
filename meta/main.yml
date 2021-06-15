@@ -16,9 +16,9 @@ galaxy_info:
 
   # Platforms are supported
   platforms:
-    - name: Fedora
-      versions:
-        - 34
+    # - name: Fedora
+    #   versions:
+    #     - 34
     - name: Debian
       versions:
         - stretch
