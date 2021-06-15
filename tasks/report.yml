@@ -15,7 +15,7 @@
 - name: Start sos-report | Ubuntu
   command: >
     sosreport 
-    --o "{{ sos_modules }}" 
+    --o "{{ sos_modules|join(',') }}" 
     --name "{{ costumer }}" 
     --case-id "{{ ticket_number }}" 
     --tmp-dir "{{ tmp_dir }}" 
@@ -28,7 +28,7 @@
 - name: Start sos-report | RedHat
   command: >
     sosreport 
-    --o "{{ sos_modules }}" 
+    --o "{{ sos_modules|join(',') }}" 
     --name "{{ costumer }}" 
     --case-id "{{ ticket_number }}" 
     --tmp-dir "{{ tmp_dir }}" 
@@ -41,7 +41,7 @@
 - name: Start sos-report | Debian 9
   command: >
     sosreport 
-    --o "{{ sos_modules }}" 
+    --o "{{ sos_modules|join(',') }}" 
     --name "{{ costumer }}" 
     --case-id "{{ ticket_number }}" 
     --tmp-dir "{{ tmp_dir }}" 
@@ -54,7 +54,7 @@
 - name: Start sos-report | Generic
   command: >
     sos report 
-    --o "{{ sos_modules }}" 
+    --o "{{ sos_modules|join(',') }}" 
     --name "{{ costumer }}" 
     --case-id "{{ ticket_number }}" 
     --tmp-dir "{{ tmp_dir }}" 
