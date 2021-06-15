@@ -1,9 +1,8 @@
 galaxy_info:
 
   # Generic Info
-  author: Serbay ACAR
+  author: Serbay ACAR (serbayacar@gmail.com)
   description: Get your system reports using the sosreport tool for the latest Linux distros.
-  company: Profelis IT Colsuntancy
 
   # GitHub Features
   issue_tracker_url: https://github.com/serbayacar/ansible_role_sos-report/issues
