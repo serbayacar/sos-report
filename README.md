@@ -59,7 +59,9 @@ Generic view,
 
 4# Which modules do you want sos-report to use while reporting? (comma separated) 
 
-    sos_modules: module1,module2 
+    sos_modules: 
+      - module1
+      - module2 
 
 Example Playbook
 ----------------
