@@ -1,4 +1,4 @@
-Role Name
+sos-report
 =========
 
 Get your system reports using the `sosreport` for the latest released Linux distros.
