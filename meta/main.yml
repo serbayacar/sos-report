@@ -5,7 +5,7 @@ galaxy_info:
   description: Get your system reports using the sosreport tool for the latest Linux distros.
 
   # GitHub Features
-  issue_tracker_url: https://github.com/serbayacar/ansible_role_sos-report/issues
+  issue_tracker_url: https://github.com/serbayacar/ansible-role-sos-report/issues
   github_branch: master
 
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
