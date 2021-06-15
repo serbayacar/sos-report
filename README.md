@@ -1,38 +1,78 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Get your system reports using the `sosreport` for the latest released Linux distros.
 
 Requirements
 ------------
+Before playing this role, the current Ansible 2.9+ software must be installed on your system.  
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+For Ubuntu/Debian,
+```
+sudo apt update
+sudo apt install software-properties-common
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible
+```
+
+For RedHat/CentOS,
+```
+sudo yum update
+sudo yum install epel-release
+sudo yum install
+```
+
+If you need a more comprehensive explanation for the installation or if you are using an operating system other than the operating systems listed above, please review [official documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).  
+
+\* There are no extra requirements other than the Ansible. 
 
 Role Variables
 --------------
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Generic view,
 
-Dependencies
-------------
+    # sosreport output to?
+    tmp_dir: /tmp/
+    fetch_to: /tmp/
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+    # sosreport command variables
+    ticket_number: 1001
+    costumer: 'test'
+
+    # Specify modules which are used while reporting (comma seperated)
+    sos_modules: module1,module2
+  
+
+1# Sosreport command to which directory you want to output your system reports on the remote computer (default `/tmp/`). 
+
+    tmp_dir: /tmp/
+
+2# After the reporting process is finished, in which directory you want to save the reports on your local computer ( default `/tmp/`)
+
+    fetch_to: /tmp/
+
+3# Sosreport uses customer or customizable report number features while generating reports.  
+
+    ticket_number: 1001
+    costumer: 'test'
+
+4# Which modules do you want sos-report to use while reporting? (comma separated) 
+
+    sos_modules: module1,module2 
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+An existing test role listed below. You can find in `tests/tests.yml`
 
     - hosts: servers
+      become:yes
+      gather_facts: yes
       roles:
-         - { role: username.rolename, x: 42 }
+         - sos-report
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
