@@ -1,4 +1,4 @@
-sos-report
+Role Name
 =========
 
 Get your system reports using the `sosreport` for the latest released Linux distros.
@@ -26,6 +26,26 @@ If you need a more comprehensive explanation for the installation or if you are 
 
 \* There are no extra requirements other than the Ansible. 
 
+To Run Role
+-----------
+
+You install this role with using `ansible-galaxy`,
+
+```
+ansible-galaxy install serbayacar.sos_report
+```
+
+Or just clone this repo with using `git`,
+
+```
+git clone https://github.com/serbayacar/sos-report.git
+```
+
+After you have successfully get the relevant role, you must change your default variables (see `defaults/main.yml`) for the role and the remote hosts information (see `tests/inventory`).  
+
+Once you've made sure you've made all your changes, just play your playbook!
+
+
 Role Variables
 --------------
 Available variables are listed below, along with default values (see `defaults/main.yml`):
@@ -41,7 +61,9 @@ Generic view,
     costumer: 'test'
 
     # Specify modules which are used while reporting (comma seperated)
-    sos_modules: module1,module2
+    sos_modules:
+      - module1
+      - module2
   
 
 1# Sosreport command to which directory you want to output your system reports on the remote computer (default `/tmp/`). 
